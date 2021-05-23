@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import {
   View,
+  Animated,
   Text,
   Button,
   StyleSheet,
@@ -10,13 +11,16 @@ import {
   Keyboard,
   TouchableOpacity,
 } from "react-native";
-import auth from "firebase/auth";
+import firebase from "firebase";
 import Category from "./Category";
+import LottieView from "lottie-react-native";
 
 const App = ({ navigation }: any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
+
+
 
   function controlEmailPassword(email: string, password: string) {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
@@ -24,38 +28,56 @@ const App = ({ navigation }: any) => {
     if (reg.test(email) === false) {
       console.log("Email is not proper!");
     } else {
-      // auth()
-      //   .createUserWithEmailAndPassword(email, password)
-      //   .then(() => {
-      //     console.log("User account created & signed in!");
-      //     navigation.navigate(Category, { nickname: nickname });
-      //   });
+      firebase.
+      auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log("User account created & signed in!");
+        firebase.firestore()
+        .collection('Users')
+        .get()
+        .then(querySnapshot=>{
+          querySnapshot.forEach(documentSnapshot=>{
+            if(documentSnapshot.data().email == email){
+              setNickname(documentSnapshot.data().nickname);
+            }
+          })
+        })
+        navigation.navigate(Category, { nickname: nickname });
+      });
     }
   }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={{ flex: 1 }}>
-          <TextInput
-            style={{ ...styles.input, marginTop: 200 }}
-            onChangeText={setEmail}
-            placeholder="e-mail"
-            value={email}
+        <View style={{ flex: 1 ,marginTop: 250  }}>
+          <LottieView
+            style={styles.welcomeLottie}
+            source={require("../assets/lottie/shapesbackground.json")}
+            autoPlay
           />
-          <TextInput
-            style={styles.input}
-            onChangeText={setPassword}
-            secureTextEntry={true}
-            placeholder="password"
-            value={password}
-          />
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => controlEmailPassword(email, password)}
-          >
-            <Text>Login</Text>
-          </TouchableOpacity>
+          <View>
+            <TextInput
+              style={{ ...styles.input}}
+              onChangeText={setEmail}
+              placeholder="e-mail"
+              value={email}
+            />
+            <TextInput
+              style={styles.input}
+              onChangeText={setPassword}
+              secureTextEntry={true}
+              placeholder="password"
+              value={password}
+            />
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => controlEmailPassword(email, password)}
+            >
+              <Text>Login</Text>
+            </TouchableOpacity> 
+          </View>
         </View>
       </TouchableWithoutFeedback>
     </SafeAreaView>
@@ -80,5 +102,10 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderRadius: 30,
     padding: 10,
+  },
+  welcomeLottie: {
+    flex: 1,
+    alignItems: "center",
+    marginTop:-125
   },
 });

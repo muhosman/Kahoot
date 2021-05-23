@@ -10,10 +10,9 @@ import {
   Keyboard,
   TouchableOpacity,
 } from "react-native";
-import auth from "firebase/auth";
 import firebase from "firebase";
-
-import Welcome from "./Welcome";
+import LottieView from "lottie-react-native";
+import Category from "./Category";
 
 const App = ({ navigation }: any) => {
   const [email, setEmail] = useState("");
@@ -35,50 +34,60 @@ const App = ({ navigation }: any) => {
       .createUserWithEmailAndPassword(email,password)
       .then(() => {
         console.log('User account created & signed in!');
-
-        //navigation.navigate(Welcome);
+        firebase.auth().signOut;
+        navigation.navigate(Category);
       });
+      /*
       firebase.
       firestore()
       .collection('Users')
       .add({
-        
+        points:0,
         email:email,
         nickname:nickname,
-      });
+      });*/
+      
     }
   }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={{ flex: 1 }}>
-          <TextInput
-            style={{ ...styles.input, marginTop: 200 }}
-            onChangeText={setEmail}
-            placeholder="e-mail"
-            value={email}
+        <View style={{ flex: 1, marginTop: 250  }}>
+          <LottieView
+            style={styles.welcomeLottie}
+            source={require("../assets/lottie/shapesbackground.json")}
+            autoPlay
           />
-          <TextInput
-            style={styles.input}
-            onChangeText={setPassword}
-            secureTextEntry={true}
-            placeholder="password"
-            value={password}
-          />
-          <TextInput
-            style={styles.input}
-            onChangeText={setNickname}
-            secureTextEntry={true}
-            placeholder="nickname"
-            value={nickname}
-          />
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => controlEmailPassword(email, password, nickname)}
-          >
-            <Text>Register</Text>
-          </TouchableOpacity>
+          <View>
+            <TextInput
+              style={{ ...styles.input}}
+              onChangeText={setEmail}
+              placeholder="e-mail"
+              value={email}
+            />
+            <TextInput
+              style={styles.input}
+              onChangeText={setPassword}
+              secureTextEntry={true}
+              placeholder="password"
+              value={password}
+            />
+            <TextInput
+              style={styles.input}
+              onChangeText={setNickname}
+              secureTextEntry={true}
+              placeholder="nickname"
+              value={nickname}
+            />
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => controlEmailPassword(email, password, nickname)}
+            >
+              <Text>Register</Text>
+            </TouchableOpacity>
+          </View>
+          
         </View>
       </TouchableWithoutFeedback>
     </SafeAreaView>
@@ -103,5 +112,10 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderRadius: 30,
     padding: 10,
+  },
+  welcomeLottie: {
+    flex: 1,
+    alignItems: "center",
+    marginTop:-125
   },
 });
