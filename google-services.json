@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "737570003888",
+    "project_id": "kahootproject-7036a",
+    "storage_bucket": "kahootproject-7036a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737570003888:android:5d429ffb03d218f3991475",
+        "android_client_info": {
+          "package_name": "com.kahootProject.kahootDataBase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737570003888-u1sjl09cagsohr6enlhuk0r5pqbpm5s3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBNRdEjshd_LTBWXt3l_psil7hHctpnL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737570003888-u1sjl09cagsohr6enlhuk0r5pqbpm5s3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "737570003888-17bb9rt0hmeeft1b6og4jkbvblor501v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kahootProject.kahootDataBase"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

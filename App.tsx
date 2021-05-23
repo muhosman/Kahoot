@@ -1,21 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component,useEffect } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import NavigationArchitect from "./src/navigation/NavigationArchitect";
+import firebase from 'firebase'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+const firebaseConfig={
+  apiKey: "AIzaSyBUFEyyOdBVZFRE45OKdIzuUh4yaFx72_I",
+  authDomain: "kahootproject-7036a.firebaseapp.com",
+  projectId: "kahootproject-7036a",
+  storageBucket: "kahootproject-7036a.appspot.com",
+  messagingSenderId: "737570003888",
+  appId: "1:737570003888:web:f55cc850e0f2eb36991475"
+};
+
+export default function App (){
+
+  useEffect(() => {
+    // Your web app's Firebase configuration
+    let firebaseConfig = {
+      apiKey: "AIzaSyBUFEyyOdBVZFRE45OKdIzuUh4yaFx72_I",
+      authDomain: "kahootproject-7036a.firebaseapp.com",
+      projectId: "kahootproject-7036a",
+      storageBucket: "kahootproject-7036a.appspot.com",
+      messagingSenderId: "737570003888",
+      appId: "1:737570003888:web:f55cc850e0f2eb36991475"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  }, []);
+
+    return (
+  
+      <NavigationArchitect />
+    
+    );
+  
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
