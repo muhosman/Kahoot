@@ -42,6 +42,14 @@ export default function Category({ navigation }: any) {
       name: "Basketbol",
       url: "https://i4.hurimg.com/i/hurriyet/75/0x0/5de0bb392269a216d467e176.gif",
     },
+    {
+        name: "Basketbol",
+        url: "https://i4.hurimg.com/i/hurriyet/75/0x0/5de0bb392269a216d467e176.gif",
+    },
+    {
+        name: "Basketbol",
+        url: "https://i4.hurimg.com/i/hurriyet/75/0x0/5de0bb392269a216d467e176.gif",
+    },
   ]);
   return (
     <FlatList
