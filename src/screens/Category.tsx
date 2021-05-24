@@ -69,24 +69,28 @@ export default function Category({ navigation }: any) {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#dff9fb" }}>
       <TouchableWithoutFeedback onPress={closePopUp}>
-        <View style={{ flex: 1, marginTop: 30, backgroundColor: "#dff9fb" }}>
+        <View style={{ flex: 1, marginTop: 60, backgroundColor: "#dff9fb" }}>
           <LottieView
             style={styles.welcomeLottie}
             source={require("../assets/lottie/shapesbackground.json")}
             autoPlay
           />
           <FlatList
-            style={{ maxHeight: "100%" }}
+            style={{ maxHeight: "85%" }}
             showsVerticalScrollIndicator={false}
             data={Category}
             renderItem={({ item, index }) => (
-              <View style={styles.list}>
+              <View style={{ ...styles.list, height: 200 }}>
                 <Text
                   style={{
                     borderBottomWidth: 5,
                     borderRadius: 10,
                     borderBottomColor: "grey",
                     paddingBottom: 10,
+                    paddingLeft: 20,
+                    fontFamily: "sans-serif-condensed",
+                    fontWeight: "bold",
+                    fontSize: 20,
                   }}
                 >
                   {item.name}
@@ -102,9 +106,11 @@ export default function Category({ navigation }: any) {
                       style={{
                         ...styles.list,
                         height: 100,
+                        width: 100,
                         margin: 15,
                         backgroundColor: "#58B19F",
-                        padding: 15,
+                        borderTopRightRadius: 0,
+                        borderTopLeftRadius: 0,
                       }}
                     >
                       <TouchableOpacity
@@ -117,24 +123,47 @@ export default function Category({ navigation }: any) {
                           }}
                         />
                       </TouchableOpacity>
-                      <Text>{item.name}</Text>
+                      <Text
+                        style={{
+                          marginTop: 5,
+                          alignSelf: "center",
+                          fontFamily: "sans-serif-condensed",
+                        }}
+                      >
+                        {item.name}
+                      </Text>
                     </View>
                   )}
                 />
               </View>
             )}
           />
-
           <View style={styles.buttonView}>
             <TouchableOpacity
               style={{ ...styles.button, marginRight: 10 }}
               onPress={create}
             >
-              <Text style={{ marginTop: 20 }}>Create</Text>
+              <Text
+                style={{
+                  marginTop: 17,
+                  fontFamily: "sans-serif-condensed",
+                  fontWeight: "bold",
+                }}
+              >
+                Create
+              </Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button} onPress={join}>
-              <Text style={{ marginTop: 20 }}>Join</Text>
+              <Text
+                style={{
+                  marginTop: 17,
+                  fontFamily: "sans-serif-condensed",
+                  fontWeight: "bold",
+                }}
+              >
+                Join
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -170,8 +199,9 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   tinyImage: {
-    width: 50,
-    height: 50,
+    borderRadius: 10,
+    width: 100,
+    height: 70,
     alignSelf: "center",
   },
   visible: {
@@ -187,7 +217,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   buttonView: {
-    marginTop: 650,
+    marginTop: 600,
     flexDirection: "row",
     alignSelf: "center",
     marginVertical: 10,

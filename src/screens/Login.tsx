@@ -29,7 +29,8 @@ const App = ({ navigation }: any) => {
         .auth()
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
-          console.log("User account created & signed in!");
+          console.log("User account signed in!");
+          {/** 
           firebase
             .firestore()
             .collection("Users")
@@ -40,8 +41,8 @@ const App = ({ navigation }: any) => {
                   setNickname(documentSnapshot.data().nickname);
                 }
               });
-            });
-          navigation.navigate("Category", { nickname: nickname });
+            });*/}
+          navigation.navigate("Category");
         });
     }
   }
@@ -63,7 +64,7 @@ const App = ({ navigation }: any) => {
                 fontFamily: "sans-serif-condensed",
                 fontWeight: "bold",
               }}
-              onPress={navigation.navigate("Welcome")}
+              //onPress={navigation.navigate("Welcome")}
             >
               Cancel
             </Text>

@@ -42,7 +42,7 @@ export default function Welcome({ navigation }: any) {
       </View>
     </View>
   );
-}
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,

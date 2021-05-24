@@ -34,17 +34,18 @@ const App = ({ navigation }: any) => {
         .then(() => {
           console.log("User account created & signed in!");
           firebase.auth().signOut;
+          firebase.
+          firestore()
+          .collection('Users')
+          .add({
+            points:0,
+            email:email,
+            nickname:nickname,
+          });
           navigation.navigate("Category");
         });
-      /*
-      firebase.
-      firestore()
-      .collection('Users')
-      .add({
-        points:0,
-        email:email,
-        nickname:nickname,
-      });*/
+      
+
     }
   }
 
@@ -65,7 +66,7 @@ const App = ({ navigation }: any) => {
                 fontFamily: "sans-serif-condensed",
                 fontWeight: "bold",
               }}
-              onPress={navigation.navigate("Welcome")}
+             // onPress={navigation.navigate("Welcome")}
             >
               Cancel
             </Text>

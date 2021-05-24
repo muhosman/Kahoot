@@ -15,18 +15,12 @@ const Stack = createStackNavigator();
 const NavigationArchitect = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome">
+      <Stack.Navigator initialRouteName="Category">
         <Stack.Screen
           name="Welcome"
           component={Welcome}
           options={{ headerShown: false }}
         />
-        <Stack.Screen
-          name="CreatingCompetition"
-          component={CreatingCompetition}
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen name="AddingQuestion" component={AddingQuestion} />
         <Stack.Screen
           name="Login"
           component={Login}
@@ -42,6 +36,13 @@ const NavigationArchitect = () => {
           component={Category}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="CreatingCompetition"
+          component={CreatingCompetition}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen name="AddingQuestion" component={AddingQuestion} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
