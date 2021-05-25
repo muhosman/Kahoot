@@ -14,7 +14,7 @@ import CompetitionInfo from "./CompetitionInfo";
 import Create from "./Create";
 import LottieView from "lottie-react-native";
 
-export default function Category({ navigation, }: any) {
+export default function Category({ navigation }: any) {
   //const [nickname] = route.params;
   const [visible, setVisible] = useState(false);
   const [Category, setCategory] = useState([
@@ -26,7 +26,6 @@ export default function Category({ navigation, }: any) {
     { name: "Eğitim" },
     { name: "Eğitim" },
     { name: "Eğitim" },
-    { name: "Eğitim" },    { name: "Eğitim" },
     { name: "Eğitim" },
     { name: "Eğitim" },
     { name: "Eğitim" },
@@ -34,9 +33,18 @@ export default function Category({ navigation, }: any) {
     { name: "Eğitim" },
     { name: "Eğitim" },
     { name: "Eğitim" },
-
+    { name: "Eğitim" },
+    { name: "Eğitim" },
   ]);
   const [Competition, setCompetition] = useState([
+    {
+      name: "Basketbol",
+      url: "https://i4.hurimg.com/i/hurriyet/75/0x0/5de0bb392269a216d467e176.gif",
+    },
+    {
+      name: "Basketbol",
+      url: "https://i4.hurimg.com/i/hurriyet/75/0x0/5de0bb392269a216d467e176.gif",
+    },
     {
       name: "Basketbol",
       url: "https://i4.hurimg.com/i/hurriyet/75/0x0/5de0bb392269a216d467e176.gif",
@@ -51,40 +59,62 @@ export default function Category({ navigation, }: any) {
     //navigation.navigate(Create);
   }
   function closePopUp() {
-
     setVisible(false);
   }
   function join() {
-    console.warn('asfas');
+    console.warn("asfas");
     setVisible(true);
   }
 
   return (
-    <SafeAreaView style={{ flex: 1,backgroundColor:'#9AECDB'  }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#dff9fb" }}>
       <TouchableWithoutFeedback onPress={closePopUp}>
-        <View style={{ flex: 1,marginTop:30,backgroundColor:'#9AECDB' }}>
-             <LottieView
-              style={styles.welcomeLottie}
-              source={require("../assets/lottie/shapesbackground.json")}
-              autoPlay
-            />
-            <FlatList
-            style={{ maxHeight: "100%" }}
+        <View style={{ flex: 1, marginTop: 60, backgroundColor: "#dff9fb" }}>
+          <LottieView
+            style={styles.welcomeLottie}
+            source={require("../assets/lottie/shapesbackground.json")}
+            autoPlay
+          />
+          <FlatList
+            style={{ maxHeight: "85%" }}
             showsVerticalScrollIndicator={false}
             data={Category}
-            renderItem={({ item,index }) => (
-              <View style={styles.list}>
-                <Text style={{borderBottomWidth:5,borderRadius:10,borderBottomColor:'grey',paddingBottom:10}}>{item.name}</Text>
-                
+            renderItem={({ item, index }) => (
+              <View style={{ ...styles.list, height: 200 }}>
+                <Text
+                  style={{
+                    borderBottomWidth: 5,
+                    borderRadius: 10,
+                    borderBottomColor: "grey",
+                    paddingBottom: 10,
+                    paddingLeft: 20,
+                    fontFamily: "sans-serif-condensed",
+                    fontWeight: "bold",
+                    fontSize: 20,
+                  }}
+                >
+                  {item.name}
+                </Text>
+
                 <FlatList
                   style={{ maxHeight: "100%" }}
                   horizontal
                   showsHorizontalScrollIndicator={false}
                   data={Competition}
                   renderItem={({ item }) => (
-                    <View style={{ ...styles.list,height:100, margin: 15 ,backgroundColor:'#58B19F',padding:15}}>
+                    <View
+                      style={{
+                        ...styles.list,
+                        height: 100,
+                        width: 100,
+                        margin: 15,
+                        backgroundColor: "#58B19F",
+                        borderTopRightRadius: 0,
+                        borderTopLeftRadius: 0,
+                      }}
+                    >
                       <TouchableOpacity
-                        //onPress={navigation.navigate(CompetitionInfo,item,)}
+                      //onPress={navigation.navigate(CompetitionInfo,item,)}
                       >
                         <Image
                           style={styles.tinyImage}
@@ -93,30 +123,52 @@ export default function Category({ navigation, }: any) {
                           }}
                         />
                       </TouchableOpacity>
-                      <Text>{item.name}</Text>
+                      <Text
+                        style={{
+                          marginTop: 5,
+                          alignSelf: "center",
+                          fontFamily: "sans-serif-condensed",
+                        }}
+                      >
+                        {item.name}
+                      </Text>
                     </View>
                   )}
                 />
               </View>
-            )} 
+            )}
           />
-
           <View style={styles.buttonView}>
-            <TouchableOpacity style={{ ...styles.button, marginRight: 10 }} onPress={create}>
-              <Text style={{ marginTop: 20 }}>Create</Text>
+            <TouchableOpacity
+              style={{ ...styles.button, marginRight: 10 }}
+              onPress={create}
+            >
+              <Text
+                style={{
+                  marginTop: 17,
+                  fontFamily: "sans-serif-condensed",
+                  fontWeight: "bold",
+                }}
+              >
+                Create
+              </Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button} onPress={join}>
-              <Text style={{ marginTop: 20 }}>Join</Text>
+              <Text
+                style={{
+                  marginTop: 17,
+                  fontFamily: "sans-serif-condensed",
+                  fontWeight: "bold",
+                }}
+              >
+                Join
+              </Text>
             </TouchableOpacity>
           </View>
-
         </View>
       </TouchableWithoutFeedback>
-      {visible ? 
-      <View style={styles.visible}>
-
-      </View> : null}
+      {visible ? <View style={styles.visible}></View> : null}
     </SafeAreaView>
   );
 }
@@ -142,15 +194,15 @@ const styles = StyleSheet.create({
   },
   list: {
     height: 150,
-    marginLeft:20,
-    marginRight:20,
-    borderRadius:20,
-
+    marginLeft: 20,
+    marginRight: 20,
+    borderRadius: 20,
   },
   tinyImage: {
-    width: 50,
-    height: 50,
-    alignSelf:"center"
+    borderRadius: 10,
+    width: 100,
+    height: 70,
+    alignSelf: "center",
   },
   visible: {
     width: "80%",
@@ -164,8 +216,8 @@ const styles = StyleSheet.create({
     shadowColor: "grey",
     borderRadius: 10,
   },
-  buttonView:{
-    marginTop: 650,
+  buttonView: {
+    marginTop: 600,
     flexDirection: "row",
     alignSelf: "center",
     marginVertical: 10,

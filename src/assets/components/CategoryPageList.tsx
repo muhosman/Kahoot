@@ -42,32 +42,54 @@ export default function Category({ navigation }: any) {
       name: "Basketbol",
       url: "https://i4.hurimg.com/i/hurriyet/75/0x0/5de0bb392269a216d467e176.gif",
     },
+    {
+      name: "Basketbol",
+      url: "https://i4.hurimg.com/i/hurriyet/75/0x0/5de0bb392269a216d467e176.gif",
+    },
+    {
+      name: "Basketbol",
+      url: "https://i4.hurimg.com/i/hurriyet/75/0x0/5de0bb392269a216d467e176.gif",
+    },
   ]);
   return (
     <FlatList
-      style={{ maxHeight: "100%" }}
+      style={{ maxHeight: "85%" }}
       showsVerticalScrollIndicator={false}
       data={Category}
       renderItem={({ item, index }) => (
-        <View style={styles.list}>
+        <View style={{ ...styles.list, height: 200 }}>
           <Text
             style={{
               borderBottomWidth: 5,
               borderRadius: 10,
               borderBottomColor: "grey",
-              paddingBottom: 5,
-              paddingLeft: 10,
+              paddingBottom: 10,
+              paddingLeft: 20,
+              fontFamily: "sans-serif-condensed",
+              fontWeight: "bold",
+              fontSize: 20,
             }}
           >
             {item.name}
           </Text>
+
           <FlatList
             style={{ maxHeight: "100%" }}
             horizontal
             showsHorizontalScrollIndicator={false}
             data={Competition}
             renderItem={({ item }) => (
-              <View style={{ ...styles.list, margin: 15 }}>
+              <View
+                style={{
+                  ...styles.list,
+                  height: 100,
+                  width: 100,
+                  margin: 15,
+                  backgroundColor: "#58B19F",
+                  borderTopRightRadius: 0,
+                  borderTopLeftRadius: 0,
+                }}
+              >
                 <TouchableOpacity
                 //onPress={navigation.navigate(CompetitionInfo,item,)}
                 >
@@ -78,7 +100,15 @@ export default function Category({ navigation }: any) {
                     }}
                   />
                 </TouchableOpacity>
-                <Text>{item.name}</Text>
+                <Text
+                  style={{
+                    marginTop: 5,
+                    alignSelf: "center",
+                    fontFamily: "sans-serif-condensed",
+                  }}
+                >
+                  {item.name}
+                </Text>
               </View>
             )}
           />

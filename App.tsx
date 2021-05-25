@@ -30,9 +30,7 @@ export default function App (){
   }, []);
 
     return (
-  
       <NavigationArchitect />
-    
     );
   
 }
