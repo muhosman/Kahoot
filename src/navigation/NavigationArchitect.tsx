@@ -15,7 +15,12 @@ const Stack = createStackNavigator();
 const NavigationArchitect = () => {
   return (
     <NavigationContainer>
+<<<<<<< HEAD
+      <Stack.Navigator initialRouteName="CreatingCompetition">
+        <Stack.Screen name="Welcome" component={Welcome} />
+=======
       <Stack.Navigator initialRouteName="Category">
+>>>>>>> 706f08b8f57e73c6d8b79006d6489270544b7f0a
         <Stack.Screen
           name="Welcome"
           component={Welcome}
