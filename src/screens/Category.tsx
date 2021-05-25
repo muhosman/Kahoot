@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   SafeAreaView,
   View,
@@ -13,6 +13,11 @@ import { Directions } from "react-native-gesture-handler";
 import CompetitionInfo from "./CompetitionInfo";
 import Create from "./Create";
 import LottieView from "lottie-react-native";
+
+import * as firebase from "firebase";
+import "firebase/firestore";
+
+const dbh = firebase.default.firestore();
 
 export default function Category({ navigation }: any) {
   //const [nickname] = route.params;
@@ -62,19 +67,33 @@ export default function Category({ navigation }: any) {
     setVisible(false);
   }
   function join() {
-    console.warn("asfas");
     setVisible(true);
   }
+
+  useEffect(() => {
+    dbh
+      .collection("characters")
+      .doc("mario")
+      .set({
+        employment: "plumber",
+        outfitColor: "red",
+        specialAttack: "fireball",
+      })
+      .then(() => {})
+      .catch((err) => {
+        console.warn(err);
+      });
+  }, []);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#dff9fb" }}>
       <TouchableWithoutFeedback onPress={closePopUp}>
         <View style={{ flex: 1, marginTop: 60, backgroundColor: "#dff9fb" }}>
-          <LottieView
+          {/* <LottieView
             style={styles.welcomeLottie}
             source={require("../assets/lottie/shapesbackground.json")}
             autoPlay
-          />
+          /> */}
           <FlatList
             style={{ maxHeight: "85%" }}
             showsVerticalScrollIndicator={false}
