@@ -9,11 +9,14 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import LottieView from "lottie-react-native";
+import firebase from "firebase";
 
 export default function CreatingCompetition({ navigation }: any) {
   const [categoryName, setCategoryName] = useState("");
   const [competitionName, setCompetitionName] = useState("");
   const [questionNumber, setQuestionNumber] = useState("");
+
+  
   return (
     <View style={{ flex: 1, alignItems: "center", backgroundColor: "#ecf0f1" }}>
       <LottieView
